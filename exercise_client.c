@@ -63,7 +63,7 @@ int main(int argc, char *argv[]) {
       perror("write");
       break;
     } else {
-      //  success
+      //  send successfully
     }
 
     // receive from sever with timeout

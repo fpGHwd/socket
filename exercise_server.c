@@ -18,6 +18,7 @@ void delay_m(int milliseconds) {
 }
 
 int main(int argc, char *argv[]) {
+
   struct sockaddr_un name;
   int down_flag = 0;
   int down_flag_5 = 0;
@@ -114,7 +115,7 @@ int main(int argc, char *argv[]) {
       }
 
       if (!strncmp(buffer, "END", BUFFER_SIZE)) {
-        break; // not exit after command "END"
+        break; // exit from this client after command "END"
       }
 
       printf("Reading from client: %s", buffer);
@@ -138,9 +139,6 @@ int main(int argc, char *argv[]) {
 
     /* Close socket. */
     close(data_socket);
-    /*   if (down_flag_5 >= 5) { */
-    /*     break; */
-    /*   } */
   }
 
   close(connection_socket);
