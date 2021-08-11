@@ -1,4 +1,5 @@
 #include "connection.h"
+#include "protocol.h"
 #include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -59,7 +60,10 @@ int main(int argc, char *argv[]) {
       continue;
     }
 
-    ret = write(data_socket, buffer, strlen(buffer) + 1); // argv[i] from 1 on
+    // wrappe the message
+    byte *wm = wrap_a_message(buffer, strlen(buffer) - 1);
+
+    ret = write(data_socket, wm, strlen(buffer) - 1 + 5); // argv[i] from 1 on
     if (ret == -1) {
       perror("write");
       break;

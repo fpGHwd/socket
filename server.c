@@ -1,4 +1,5 @@
 #include "connection.h"
+#include "protocol.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -6,8 +7,6 @@
 #include <sys/un.h>
 #include <time.h>
 #include <unistd.h>
-
-#include "protocol.h"
 
 void delay_m(int milliseconds) {
   long pause;
