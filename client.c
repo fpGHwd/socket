@@ -8,6 +8,7 @@
 #include <unistd.h>
 
 int main(int argc, char *argv[]) {
+
   struct sockaddr_un addr;
   int i;
   int ret;

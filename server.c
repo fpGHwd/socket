@@ -7,6 +7,8 @@
 #include <time.h>
 #include <unistd.h>
 
+#include "protocol.h"
+
 void delay_m(int milliseconds) {
   long pause;
   clock_t now, then;
@@ -26,7 +28,7 @@ int main(int argc, char *argv[]) {
   int connection_socket;
   int data_socket;
   int result;
-  char buffer[BUFFER_SIZE];
+  byte buffer[BUFFER_SIZE];
 
   /*
    * In case the program exited inadvertently on the last run,
@@ -97,10 +99,14 @@ int main(int argc, char *argv[]) {
     for (;;) {
 
       /* Wait for next data packet. */
-      ret = read(data_socket, buffer, BUFFER_SIZE);
-      if (ret == -1) {
-        perror("read");
+      /* TODO read from client, like reading a packet. */
+      // ret = read(data_socket, buffer, BUFFER_SIZE);
+      ret = read_a_packet(&data_socket, buffer, BUFFER_SIZE);
+      if (ret < 0) {
+        perror("read a packet");
         exit(EXIT_FAILURE);
+      } else {
+        printf("read package len: %d\n", ret);
       }
 
       /* Ensure buffer is 0-terminated. */
