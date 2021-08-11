@@ -125,8 +125,8 @@ int main(int argc, char *argv[]) {
         // printf("buffer is %s\n", buffer);  // test buffer
         ret = write(data_socket, buffer, BUFFER_SIZE);
         /* printf("delaying...\n"); */
-        delay_m(5000);
         printf("delaying for 5 seconds then exit from client...\n");
+        delay_m(5000);
         break;
       }
     }

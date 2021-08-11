@@ -90,7 +90,7 @@ int main(int argc, char *argv[]) {
 
       // if receive "Q", then exit
       if (strncmp(buffer, "Q", BUFFER_SIZE) == 0) {
-        printf("exit for server send 'Q'\n");
+        printf("exiting from server for receiving 'Q'\n");
         break;
       }
     }
